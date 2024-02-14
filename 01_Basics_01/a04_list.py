@@ -8,8 +8,7 @@ new_list[0] = 'z'
 print(new_list) # z, b, c
 
 my_list = [1,2,3]
-my_list[0] = 'z'
 bonus = my_list + [5]
-
+my_list[0] = 'z'
 print(my_list) # z, 2, 3
 print(bonus) # 1, 2, 3, 5
