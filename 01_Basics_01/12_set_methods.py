@@ -2,6 +2,7 @@ my_set = {1,2,3,4,5}
 your_set = {4,5,6,7,8,9,10}
 
 # # sets are useful for comparisons
+# # return the items that are not common:
 # print(my_set.difference(your_set))
 
 # # remove element from set if member
