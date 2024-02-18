@@ -52,14 +52,23 @@ picture = [
 #             line += '*'
 #     print(line)
 
-# instructor solution
+# # instructor solution
+# for row in picture:
+#     for pixel in row:
+#         if (pixel == 1):
+#             print('*', end='')
+#         else:
+#             print(' ', end='')
+#     print('')
+
+# instructor modified solution
+
+fill = '*'
+empty = ' '
 for row in picture:
     for pixel in row:
-        if (pixel == 1):
-            print('*', end='')
+        if pixel: # 1s are evaluated as true == 'if true . . .'
+            print(fill, end='')
         else:
-            print(' ', end='')
+            print(empty, end='')
     print('')
-
-
-
