@@ -26,6 +26,6 @@
 # for i, char in enumerate('Hello'):
 #     print(i, char)
 
-for i, number in enumerate(list(range(100))):
-    if number == 50:
-        print(f'the index of 50 is {i}')
+# for i, number in enumerate(list(range(100))):
+#     if number == 50:
+#         print(f'the index of 50 is {i}')
