@@ -1,4 +1,4 @@
-# infinte loop
+# infinte loop unless break
 i = 0
 while 0 < 50:
     print(i)

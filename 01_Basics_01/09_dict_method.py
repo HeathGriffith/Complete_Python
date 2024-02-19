@@ -1,46 +1,86 @@
-# create dictionary
-user = {
-    'basket': [1, 2, 3],
-    'greet': 'hello'   
+# Define a dictionary
+user = {"name": "John", "age": 25}
+
+# Checking existence
+print('age' in user)  # True - Checks if 'age' is a key
+print(25 in user.values())  # True - Checks if 25 is a value
+
+# Accessing elements
+print(user['name'])  # "John" - Direct access, KeyError if not exists
+# Using .get() avoids KeyError. Returns None if key not found, unless a default is provided.
+print(user.get('age'))  # 25
+print(user.get('height'))  # None, since 'height' is not a key and no default value is specified
+print(user.get('height', 'Not Available'))  # 'Not Available' - Default value if key not found
+
+
+# Adding and updating elements
+user['location'] = 'New York'  # Adds a new key-value pair
+user.update({'age': 30, 'greet': 'hello'})  # Updates 'age' and adds 'greet'
+
+# Deleting elements
+del user['location']  # Removes 'location' key
+age = user.pop('age')  # Removes 'age' and returns its value
+
+# Working with keys, values, and items
+print(user.keys())  # dict_keys(['name', 'greet']) - View of keys
+print(user.values())  # dict_values(['John', 'hello']) - View of values
+print(user.items())  # dict_items([('name', 'John'), ('greet', 'hello')]) - View of items
+
+# Copying a dictionary
+user_copy = user.copy()  # Creates a shallow copy of the dictionary
+
+# Clearing a dictionary
+user.clear()  # Empties the dictionary
+
+# Creating dictionaries
+user2 = dict(name='Heath')  # Another way to create a dictionary
+
+
+
+## Note Shallow copy explanation
+# Template for user profiles
+user_template = {
+    "name": "",
+    "age": 0,
+    "preferences": {"theme": "light", "notifications": True}
 }
 
-# Typical way to access a value in dictionary: `dict[key]`
-# to avoid error when key doesn't exit, use .get, which returns `None` 
-# can specify default value to return for nonexistenet value
-# print(user.get('age', 40))
+# Creating a new user profile from the template
+user1 = user_template.copy()
+user2 = user_template.copy()
 
-# # a less common way to create a dict
-# user2 = dict(name='Heath')
-# print(user2)
+# Customizing each user
+user1["name"] = "Alice"
+user1["age"] = 24
+user2["name"] = "Bob"
+user2["age"] = 30
 
-# as in lists and strings, keyword `in` can be used for dictionaries
-# print('basket' in user)
-# print('hello' in user) # False because not a key
+# At this point, user1 and user2 have their unique names and ages,
+# but share the same preferences dictionary due to shallow copying.
 
-# method to only check keys explicity or to check values
-# print('age' in user.keys()) # or .values()
+# If you need to change a preference uniquely, make a copy of the preferences dictionary itself.
+user1["preferences"] = user1["preferences"].copy()
+user1["preferences"]["theme"] = "dark"
 
-# method to grab entire item: `items()`
-# print(user.items())
-
-# `.clear()` to return nothing, an empty dict
-# `.copy()`
-# user3 = user.copy()
-# print(user.clear())
-# print(user3)
-
-# # `.pop(argument)` to remove key and return value
-# user2 = {"name": "Emily", "age": 30}
-# age = user2.pop('age')
-# print(age)
-# print(user2) 
+# Now user1's preferences have been customized without affecting user2 or the template.
+print(user1["preferences"])  # Output: {'theme': 'dark', 'notifications': True}
+print(user2["preferences"])  # Output: {'theme': 'light', 'notifications': True}
 
 
-# # `.update()` to add or update key-value pairs
-# user3 = {"name": "John", "age": 25}
-# user3.update({'greet': 'hello'}) 
-# user3.update({'age': 30})  
-# print(user3)  
+## Template for user profiles to demonstrate why .copy() was needed
+user_template = {
+    "name": "Template Name",
+    "age": 0,
+    "preferences": {"theme": "light", "notifications": True}
+}
 
+# Setting user1 and user2 to the template directly
+user1 = user_template
+user2 = user_template
 
+# Attempting to customize user1
+user1["name"] = "Alice"
+user1["age"] = 24
 
+# Now, user2 also sees these changes because user1 and user2 are the same object as user_template
+print(user2)  # Output will show that user2's name is also "Alice" and age is 24
