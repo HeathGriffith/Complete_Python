@@ -11,9 +11,9 @@ strings_list = []
 
 for item in mixed_list:
     if type(item) == int:
-        numbers_list.append(item)
-    else: strings_list.append(item)
+        numbers_list.append(item * 2)
+    else: strings_list.append(item * 2)
 
 print(numbers_list)
-# print(strings_list)
+print(strings_list)
 
