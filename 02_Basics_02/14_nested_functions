@@ -1,0 +1,22 @@
+# function that converts temperatures from Fahrenheit to Celsius and then determines 
+    # if the given temperature in Celsius is considered "Cold", "Moderate", or "Hot".
+
+# complete the code and round the temperature to two decimal places
+
+def temperature_feedback(fahrenheit):
+
+    def convert_to_celsius(f):
+        return (f - 32) * 5/9
+    
+    celsius = convert_to_celsius(fahrenheit)
+
+    if celsius <= 10:
+        category = "Cold"
+    elif celsius <= 25:
+        category = "Moderate"
+    else:
+        category = "Hot"
+    
+    return f"{celsius}°C is considered {category}"
+
+print(temperature_feedback(50))  
